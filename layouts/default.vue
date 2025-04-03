@@ -1,4 +1,13 @@
 <template>
-  <navbar class="mb-15" />
-  <slot />
+  <v-app>
+    <navbar />
+
+    <v-main>
+      <v-container>
+        <slot />
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
+
+<script setup></script>

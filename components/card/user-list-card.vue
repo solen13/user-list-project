@@ -21,7 +21,7 @@
       :to="`/person-detail/${data.id}`"
       class="ma-2 ml-auto text-black"
     >
-      <v-icon> mdi-chevron-right-circle-outline </v-icon>
+      <v-icon size="x-large"> mdi-chevron-right-circle-outline </v-icon>
     </nuxt-link>
   </v-card>
 </template>

@@ -1,5 +1,7 @@
 <template>
-  <user-detail-card :data="filteredProducts" />
+  <div>
+    <user-detail-card :data="filteredProducts" />
+  </div>
 </template>
 <script setup>
 import { useRoute } from 'vue-router';

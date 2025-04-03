@@ -9,7 +9,7 @@
         @click="loadMore"
         class="mx-auto"
       >
-        Daha Fazla Göster
+        show more
       </v-btn>
     </div>
   </div>
@@ -19,7 +19,7 @@
 import { ref, computed } from 'vue';
 
 const responseData = ref([]);
-const visibleCount = ref(4); // Başlangıçta 4 öğe göster
+const visibleCount = ref(4);
 
 const { data } = await useAsyncData('products', () =>
   $fetch('https://jsonplaceholder.typicode.com/users')
@@ -27,13 +27,12 @@ const { data } = await useAsyncData('products', () =>
 
 responseData.value = data.value;
 
-// Gösterilecek kullanıcıları hesaplayan computed property
 const visibleUsers = computed(() =>
   responseData.value.slice(0, visibleCount.value)
 );
 
-// Butona basıldığında 4 tane daha ekler
 const loadMore = () => {
+  // Aşırı derecede veri yüklememek için dom a kısım kısım alıyoruz
   visibleCount.value += 4;
 };
 </script>

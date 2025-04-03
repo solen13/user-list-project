@@ -1,17 +1,17 @@
 <template>
-  <v-card class="mx-auto" :max-width="cardWidth">
-    <div class="d-flex">
+  <v-card class="mx-auto" width="100%">
+    <div class="d-flex ml-4">
       <v-avatar
-        size="100"
+        size="80"
         :image="`https://picsum.photos/200/200?random=${data.id}`"
       ></v-avatar>
       <div>
-        <v-card-title>
+        <v-card-title class="pb-0">
           <div :class="$vuetify.display.mdAndUp ? 'text-h4' : 'text-h5'">
             {{ data.name }}
           </div>
         </v-card-title>
-        <v-card-title>
+        <v-card-title class="pt-0">
           <div class="text-h6">{{ data.username }}</div>
         </v-card-title>
       </div>
@@ -85,12 +85,13 @@
           {{ data.address.zipcode }}</v-list-item-subtitle
         >
 
-        <v-img
-          height="200"
-          width="300"
-          class="mr-auto"
-          :src="`https://maps.geoapify.com/v1/staticmap?style=osm-bright-grey&width=600&height=400&center=lonlat:${data.address.geo.lat},${data.address.geo.lng}&zoom=1.8713&marker=lonlat:${data.address.geo.lat},${data.address.geo.lng};type:material;color:%231f63e6;size:x-large;icon:cloud;icontype:awesome;whitecircle:no&apiKey=1f286604387540ba97d6ccb424a4b973`"
-        />
+        <div style="height: 200px; width: 300px">
+          <v-img
+            height="100%"
+            width="100%"
+            :src="`https://maps.geoapify.com/v1/staticmap?style=osm-bright-grey&width=600&height=400&center=lonlat:${data.address.geo.lat},${data.address.geo.lng}&zoom=1.8713&marker=lonlat:${data.address.geo.lat},${data.address.geo.lng};type:material;color:%231f63e6;size:x-large;icon:cloud;icontype:awesome;whitecircle:no&apiKey=1f286604387540ba97d6ccb424a4b973`"
+          />
+        </div>
       </v-list-item>
     </v-list>
   </v-card>
@@ -102,13 +103,5 @@ const props = defineProps({
     type: Object,
     default: {},
   },
-});
-
-const { xs, sm, mdAndUp } = useDisplay();
-const cardWidth = computed(() => {
-  if (xs.value) return '100%';
-  if (sm.value) return '80%';
-  if (mdAndUp.value) return '50%';
-  return '50%';
 });
 </script>
