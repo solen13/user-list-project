@@ -2,23 +2,34 @@
   <v-card class="mx-auto d-flex align-center pa-2" max-width="650">
     <v-avatar
       size="50"
-      image="https://cdn.vuetifyjs.com/images/lists/1.jpg"
+      :image="`https://picsum.photos/200/200?random=${data.id}`"
     ></v-avatar>
 
     <div class="ml-3">
-      <h2 :class="$vuetify.display.mdAndUp ? 'text-h4' : 'text-h6'">jack</h2>
+      <h2 :class="$vuetify.display.mdAndUp ? 'text-h5' : 'text-h6'">
+        {{ data.name }}
+      </h2>
 
       <div>
-        <span class="mr-2">Gwenborough</span>
-        <span>Romaguera-Crona</span>
+        <span class="mr-2">{{ data.address.city }}</span>
+        -
+        <span>{{ data.company.name }}</span>
       </div>
     </div>
 
-    <v-btn
-      class="ma-2 ml-auto"
-      icon="mdi-chevron-right-circle-outline"
-      variant="text"
-    ></v-btn>
+    <nuxt-link
+      :to="`/person-detail/${data.id}`"
+      class="ma-2 ml-auto text-black"
+    >
+      <v-icon> mdi-chevron-right-circle-outline </v-icon>
+    </nuxt-link>
   </v-card>
 </template>
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: {
+    type: Object,
+    default: {},
+  },
+});
+</script>
