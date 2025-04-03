@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" width="100%">
+  <v-card class="mx-auto" :class="$vuetify.display.mdAndUp ? 'w-66' : 'w-100'">
     <div class="d-flex ml-4">
       <v-avatar
         size="80"
